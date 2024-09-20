@@ -10,7 +10,10 @@ public class CardHolder : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        //Wait for a bit for everything to initialize
         yield return new WaitForSeconds(0.2f);
+        
+        //Creating 8 cards to chose from, this will later be a random choice from a list of prefabs
         Canvas = FindObjectOfType<Canvas>();
         for (int i = 0; i < 8; i++)
         {
