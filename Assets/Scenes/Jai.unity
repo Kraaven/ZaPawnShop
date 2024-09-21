@@ -2060,7 +2060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SkipBot: 0
-  BasePrice: 0
+  BasePrice: 200
   NegotiationPrice: 0
   TurnCounter: 0
   EndNegotiation: 0

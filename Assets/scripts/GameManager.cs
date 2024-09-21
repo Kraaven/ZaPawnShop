@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public static bool AI_Turn;
 
     public bool SkipBot;
-    public int BasePrice;
+    public int BasePrice = 200;
     public int NegotiationPrice;
     public int TurnCounter;
     public bool EndNegotiation;
@@ -28,16 +28,15 @@ public class GameManager : MonoBehaviour
 
     public void INIT()
     {
+        List<float> askingPriceArray = new List<float>();
+        askingPriceArray.Add(BasePrice * 1.1f);
+        askingPriceArray.Add(BasePrice * 1.35f);
+        askingPriceArray.Add(BasePrice / 1.35f);
+        askingPriceArray.Add(BasePrice / 1.1f);
+        
+        NegotiationPrice = (int)askingPriceArray[Random.Range(0, 3)]; 
         Events = new List<FutureEvent>();
         StartCoroutine(GameLoop());
-        
-        List<float> askingPriceArray = new List<float>();
-        askingPriceArray.Add(BasePrice * 1.5f);
-        askingPriceArray.Add(BasePrice * 2f);
-        askingPriceArray.Add(BasePrice / 1.5f);
-        askingPriceArray.Add(BasePrice / 2f);
-        
-        NegotiationPrice = (int)askingPriceArray[Random.Range(0, 4)]; 
     }
 
     private IEnumerator GameLoop()

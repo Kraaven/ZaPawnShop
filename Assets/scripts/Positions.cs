@@ -45,6 +45,8 @@ public class Positions : MonoBehaviour
                 StartCoroutine(DeleteExtraCards());
                 GameManager.Preturn = false;
                 FindObjectOfType<GameManager>().INIT();
+                print("ok" +
+                      ""); 
             }
         }
     }
