@@ -13,7 +13,7 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
     public bool CardUsed;
     public int DeckPosition;
 
-    public HardCutCard hardCutCard;
+    public List<GameObject> MyDeckCards;
 
     
     public void INIT(bool IntoDeck)
@@ -62,7 +62,11 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
                     CardCollected = true;
                     GameObject.Find("MyDeck").GetComponent<Positions>().InsertCard(this);
                     Debug.Log("Added + " + gameObject.name + "to mydecks list");
-                    hardCutCard.MyDeckCards.Add(gameObject);
+                    MyDeckCards.Add(gameObject);
+                    for (int i = 0; i < MyDeckCards.Count;i++)
+                    {
+                        Debug.Log(MyDeckCards[i]);
+                    }
                 }
             }
             // Otherwise, it's the player's turn (use cards)
@@ -93,12 +97,12 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
                 // Return the card to possibilities before destroying it
                 CardHolder.Instance.ReturnCardToPossibilities(CardHolder.LastUsedCard.name);
                 Destroy(CardHolder.LastUsedCard.gameObject);
-                for(int i = 0; i < hardCutCard.MyDeckCards.Count; i++)
+                for(int i = 0; i < MyDeckCards.Count; i++)
                 {
-                    if(hardCutCard.MyDeckCards[i].name == gameObject.name)
+                    if(MyDeckCards[i].name == gameObject.name)
                     {
-                        Debug.Log("DESTROYING: " + hardCutCard.MyDeckCards[i].name );
-                        Destroy(hardCutCard.MyDeckCards[i]);
+                        Debug.Log("DESTROYING: " + MyDeckCards[i].name );
+                        Destroy(MyDeckCards[i]);
                     }
                 }
             }

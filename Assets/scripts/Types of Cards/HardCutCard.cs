@@ -6,7 +6,6 @@ public class HardCutCard : BaseCard
 {
     // Start is called before the first frame update
     private int randomCardToDestroy;
-    public List<GameObject> MyDeckCards;
     void INIT(bool IntoDeck)
     {
         base.INIT(IntoDeck);
