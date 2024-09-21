@@ -38,10 +38,10 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
     //When the Card if clicked
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (GameManager.PlayerTurn && eventData.button == PointerEventData.InputButton.Left && !CardUsed)
+        if ( eventData.button == PointerEventData.InputButton.Left && !CardUsed)
         {
             //If the card was already collected, this yea, perform the action
-            if (CardCollected)
+            if (CardCollected && GameManager.PlayerTurn)
             {
                 // CardAction();
                 Sequence ActionSequence = DOTween.Sequence();
