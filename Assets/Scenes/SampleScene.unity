@@ -478,6 +478,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8949566467598753086, guid: f8efa8148dae1ac44b984213a7e9fc01,
+        type: 3}
+      propertyPath: CardCollected
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
