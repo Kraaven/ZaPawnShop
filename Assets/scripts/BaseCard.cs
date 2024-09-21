@@ -38,40 +38,49 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
     //When the Card if clicked
     public void OnPointerClick(PointerEventData eventData)
     {
-        if ( eventData.button == PointerEventData.InputButton.Left && !CardUsed)
+        if (eventData.button == PointerEventData.InputButton.Left && !CardUsed)
         {
-            //If the card was already collected, this yea, perform the action
-            if (CardCollected && GameManager.PlayerTurn)
+            // Check if it's the Preturn phase (collecting cards)
+            if (GameManager.Preturn)
             {
-                // CardAction();
-                Sequence ActionSequence = DOTween.Sequence();
-                GameManager.PlayerTurn = false;
-                ActionSequence.Append(transform.DOMove(CardHolder.PlayPosition.position, 1.5f).SetEase(Ease.OutQuart).OnComplete(
-                    () =>
-                    {
-                        CardAction();
-                    }));
-                ActionSequence.AppendInterval(1.5f);
-                ActionSequence.Append(transform.DOMove(CardHolder.LastUsedPosition.position, 0.75f)); 
-                ActionSequence.Append(CardHolder.LastUsedCard.transform.DOScale(Vector3.one * 0.05f, 0.1f).OnComplete(
-                    () =>
-                    {
-                        if (CardHolder.LastUsedCard != null)
-                        {
-                            Destroy(CardHolder.LastUsedCard.gameObject);
-                        }
-                        CardHolder.LastUsedCard = this;
-                        CardUsed = true;
-                    }));
-
+                if (!CardCollected)
+                {
+                    // Collect the card if it's not collected yet
+                    CardCollected = true;
+                    GameObject.Find("MyDeck").GetComponent<Positions>().InsertCard(this);
+                }
             }
-            else
+            // Otherwise, it's the player's turn (use cards)
+            else if (CardCollected && GameManager.PlayerTurn)
             {
-                //Collect it from the list of options
-                CardCollected = true;
-                GameObject.Find("MyDeck").GetComponent<Positions>().InsertCard(this);
+                UseCard();
             }
         }
+    }
+
+    // Method to handle card usage
+    private void UseCard()
+    {
+        GameManager.PlayerTurn = false;
+        
+        // Create a sequence of actions with DOTween
+        Sequence actionSequence = DOTween.Sequence();
+        actionSequence.Append(transform.DOMove(CardHolder.PlayPosition.position, 1.5f).SetEase(Ease.OutQuart)
+            .OnComplete(() => CardAction()));
+
+        actionSequence.AppendInterval(1.5f);
+
+        actionSequence.Append(transform.DOMove(CardHolder.LastUsedPosition.position, 0.75f));
+        actionSequence.Append(CardHolder.LastUsedCard.transform.DOScale(Vector3.one * 0.05f, 0.1f).OnComplete(() =>
+        {
+            if (CardHolder.LastUsedCard != null)
+            {
+                Destroy(CardHolder.LastUsedCard.gameObject);
+            }
+
+            CardHolder.LastUsedCard = this;
+            CardUsed = true;
+        }));
     }
     
     

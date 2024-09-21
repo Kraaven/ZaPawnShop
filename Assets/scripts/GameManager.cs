@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int NegotiationPrice;
 
     public static bool PlayerTurn;
+    public static bool Preturn = true;
     public void INIT()
     {
         PlayerTurn = true;

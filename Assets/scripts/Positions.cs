@@ -43,7 +43,8 @@ public class Positions : MonoBehaviour
             {
                 //Delete all the extra unpicked cards
                 StartCoroutine(DeleteExtraCards());
-                GameManager.PlayerTurn = false;
+                GameManager.Preturn = false;
+                FindObjectOfType<GameManager>().INIT();
             }
         }
     }
