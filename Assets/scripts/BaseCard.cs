@@ -26,8 +26,7 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
         }
         else
         {
-            GameObject.Find("MyDeck").GetComponent<Positions>().InsertCard(this);
-            CardCollected = true;
+            //Do Nothing
         }
         
     }

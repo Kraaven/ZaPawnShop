@@ -1599,9 +1599,6 @@ MonoBehaviour:
   - {fileID: 2049324296}
   - {fileID: 544306876}
   - {fileID: 1555722864}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   EmptyPosition: 0
   deck: 1
   PlayerCards: []
