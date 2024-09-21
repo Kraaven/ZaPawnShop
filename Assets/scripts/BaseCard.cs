@@ -13,6 +13,9 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
     public bool CardUsed;
     public int DeckPosition;
 
+    public HardCutCard hardCutCard;
+
+    
     public void INIT(bool IntoDeck)
     {
         //Insert the card into the starter picking options
@@ -58,6 +61,8 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
                     // Collect the card if it's not collected yet
                     CardCollected = true;
                     GameObject.Find("MyDeck").GetComponent<Positions>().InsertCard(this);
+                    Debug.Log("Added + " + gameObject.name + "to mydecks list");
+                    hardCutCard.MyDeckCards.Add(gameObject);
                 }
             }
             // Otherwise, it's the player's turn (use cards)
@@ -88,6 +93,14 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
                 // Return the card to possibilities before destroying it
                 CardHolder.Instance.ReturnCardToPossibilities(CardHolder.LastUsedCard.name);
                 Destroy(CardHolder.LastUsedCard.gameObject);
+                for(int i = 0; i < hardCutCard.MyDeckCards.Count; i++)
+                {
+                    if(hardCutCard.MyDeckCards[i].name == gameObject.name)
+                    {
+                        Debug.Log("DESTROYING: " + hardCutCard.MyDeckCards[i].name );
+                        Destroy(hardCutCard.MyDeckCards[i]);
+                    }
+                }
             }
 
             CardHolder.LastUsedCard = this;

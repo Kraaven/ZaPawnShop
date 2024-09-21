@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
-    private void EndGame()
+    public void EndGame()
     {
         Debug.Log("Game Over");
     }
