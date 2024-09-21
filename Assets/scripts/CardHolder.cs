@@ -13,6 +13,8 @@ public class CardHolder : MonoBehaviour
     public static Transform PlayPosition;
     public static BaseCard LastUsedCard;
     public static Transform LastUsedPosition;
+
+    public List<BaseCard> AvailableCards;
     
     // Start is called before the first frame update
     IEnumerator Start()
@@ -32,6 +34,7 @@ public class CardHolder : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         
+        FindObjectOfType<GameManager>().INIT();
     }
 
     // Update is called once per frame
