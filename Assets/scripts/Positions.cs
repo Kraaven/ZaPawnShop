@@ -11,6 +11,12 @@ public class Positions : MonoBehaviour
     public int EmptyPosition = 0;
     //check if this set of positions is  a deck, or the initial choice picker
     public bool deck;
+
+    //List of Cards in Player Deck and the Positions that are free
+    public List<BaseCard> PlayerCards;
+    public List<int> EmptyPositions;
+    
+    
     
     
 
@@ -29,6 +35,8 @@ public class Positions : MonoBehaviour
             //going into the player deck
             card.transform.DOMove(CardPositions[EmptyPosition].transform.position, 0.45f);
             card.transform.DOScale(Vector3.one, 0.45f);
+            card.DeckPosition = EmptyPosition;
+            
             EmptyPosition++;
 
             if (EmptyPosition == 5)

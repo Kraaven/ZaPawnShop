@@ -11,8 +11,15 @@ public class BlankCard : BaseCard
         base.Start();
     }
 
-    void Update()
+    public override void CardAction()
     {
-        
+        if (Upgraded)
+        {
+            
+        }
+        else
+        {
+            print($"Hello World {Random.Range(0,100)}");
+        }
     }
 }
