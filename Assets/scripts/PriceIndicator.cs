@@ -21,6 +21,7 @@ public class PriceIndicator : MonoBehaviour
     public void MoveToNewValue(int newAskingPrice)
     {
         float endVal = Mathf.InverseLerp(_gameManager.BasePrice * UppercapMultiplier, 0f, newAskingPrice);
-        DOTween.To(() => _scrollbar.value, x => _scrollbar.value = x, endVal, 0.75);
+        DOTween.To(() => _scrollbar.value, x => _scrollbar.value = x, endVal, 0.75f);
     }
+
 }

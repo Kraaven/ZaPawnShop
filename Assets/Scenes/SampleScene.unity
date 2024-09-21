@@ -1670,7 +1670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b40423dd593764c86ffc3cb7faed46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkipBot: 1
+  SkipBot: 0
   BasePrice: 0
   NegotiationPrice: 0
   TurnCounter: 0
