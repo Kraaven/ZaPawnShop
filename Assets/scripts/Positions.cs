@@ -59,6 +59,7 @@ public class Positions : MonoBehaviour
             {
                 card.transform.DOScale(Vector3.one * 0.05f, 0.1f).OnComplete(() =>
                 {
+                    CardHolder.Instance.ReturnCardToPossibilities(card.gameObject.name);
                     Destroy(card.gameObject);
                 }); 
             }

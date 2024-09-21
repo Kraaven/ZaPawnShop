@@ -19,14 +19,33 @@ public class AIDescitionMaker : MonoBehaviour
        print("Seller is choosing a deck");
        for (int i = 0; i < 5 ; i++)
        {
-           Selerdeck.Add(_cardHolder.CardDictionary[_cardHolder.DeckPossibilities[Random.Range(0, 8)]]);
+           int randomIndex = Random.Range(0, CardHolder.Instance.DeckPossibilities.Count);
+           string cardName = CardHolder.Instance.DeckPossibilities[randomIndex];
+           
+           
+           //Check if that name is inside the Dictionary
+           if (CardHolder.Instance.CardDictionary.TryGetValue(cardName, out GameObject cardPrefab))
+           {
+               // Instantiate the card
+               GameObject cardInstance = Instantiate(cardPrefab, transform.position, transform.rotation, FindObjectOfType<Canvas>().transform);
+               cardInstance.name = cardPrefab.name;
+               cardInstance.GetComponent<BaseCard>().INIT(true);
+               // Remove the card name from DeckPossibilities
+               CardHolder.Instance.DeckPossibilities.RemoveAt(randomIndex);
+
+               cardInstance.GetComponent<BaseCard>().CardCollected = true;
+           }
+           else
+           {
+               Debug.LogError($"Card prefab '{cardName}' not found in CardDictionary.");
+           }
        }
 
-       foreach (var card in Selerdeck)
-       {
-           Instantiate(card, transform);
-           // card.GetComponent<BaseCard>().CardCollected = true;
-       }
+       // foreach (var card in Selerdeck)
+       // {
+       //     Instantiate(card, transform);
+       //     // card.GetComponent<BaseCard>().CardCollected = true;
+       // }
     }
 
     public void SellerCardPlay()
