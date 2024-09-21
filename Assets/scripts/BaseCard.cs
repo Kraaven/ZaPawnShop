@@ -12,7 +12,6 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
     public bool Upgraded;
     public bool CardUsed;
     public int DeckPosition;
-    public GameObject OriginalPrefab;
 
     public void Start()
     {
@@ -83,6 +82,8 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
 
             CardHolder.LastUsedCard = this;
             CardUsed = true;
+            
+            GameManager.EndPlayerTurn();
         });
 
     }

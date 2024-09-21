@@ -20,6 +20,16 @@ public class BlankCard : BaseCard
         else
         {
             print($"Hello World {Random.Range(0,100)}");
+
+            if (GameManager.Instance.TurnCounter == 0)
+            {
+                GameManager.Instance.AddFutureEvent(2, HelloFuture);
+            }
         }
+    }
+
+    public void HelloFuture()
+    {
+        print("YOO, Hello Future!");
     }
 }
