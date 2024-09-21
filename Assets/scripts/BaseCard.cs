@@ -45,12 +45,11 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
             {
                 // CardAction();
                 Sequence ActionSequence = DOTween.Sequence();
-
+                GameManager.PlayerTurn = false;
                 ActionSequence.Append(transform.DOMove(CardHolder.PlayPosition.position, 1.5f).SetEase(Ease.OutQuart).OnComplete(
                     () =>
                     {
                         CardAction();
-                        GameManager.PlayerTurn = false;
                     }));
                 ActionSequence.AppendInterval(1.5f);
                 ActionSequence.Append(transform.DOMove(CardHolder.LastUsedPosition.position, 0.75f)); 
