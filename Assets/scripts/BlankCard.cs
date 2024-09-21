@@ -9,7 +9,7 @@ public class BlankCard : BaseCard
     {
         base.INIT(IntoDeck);
     }
-
+    
     public override void CardAction()
     {
         if (Upgraded)

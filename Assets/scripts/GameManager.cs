@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public static bool PlayerTurn;
     public static bool Preturn = true;
     public static bool AI_Turn;
+
+    [SerializeField] private AIDescitionMaker bot; 
     
 
     public bool SkipBot;
@@ -96,9 +98,9 @@ public class GameManager : MonoBehaviour
 
     private void BotTurn()
     {
+        print("Bot's Turn");
+        bot.SellerCardPlay(); 
         AI_Turn = false;
-        
-                        
     }   
 
     private IEnumerator ProcessFutureEvents()
