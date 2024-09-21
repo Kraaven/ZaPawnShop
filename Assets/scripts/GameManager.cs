@@ -97,9 +97,9 @@ public class GameManager : MonoBehaviour
     private void BotTurn()
     {
         AI_Turn = false;
-
-
-    }
+        
+                        
+    }   
 
     private IEnumerator ProcessFutureEvents()
     {
@@ -141,8 +141,6 @@ public class GameManager : MonoBehaviour
         float PerspectivePercentage = Percentage;
 
         if (PlayerTurn) PerspectivePercentage *= -1;
-        // print($"Modifying by {PerspectivePercentage}");
-        // print($"FROM : {NegotiationPrice} TO : {(int)(NegotiationPrice *(1 + PerspectivePercentage))}");
         NegotiationPrice = (int)(NegotiationPrice *(1 + PerspectivePercentage));
         _priceIndicator.MoveToNewValue(NegotiationPrice);
     }

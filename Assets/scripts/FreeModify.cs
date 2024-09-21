@@ -6,9 +6,9 @@ public class FreeModify : BaseCard
 {
 
     public int PercentageChange;
-    void Start()
+    void INIT(bool IntoDeck)
     {
-        base.Start();
+        base.INIT(IntoDeck);
     }
 
     public override void CardAction()

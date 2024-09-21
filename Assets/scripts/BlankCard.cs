@@ -5,9 +5,9 @@ using UnityEngine;
 //This is a temporary Class, we make many prefabs, one per card or smthg
 public class BlankCard : BaseCard
 {
-    void Start()
+    void INIT(bool IntoDeck)
     {
-        base.Start();
+        base.INIT(IntoDeck);
     }
 
     public override void CardAction()

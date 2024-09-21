@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SympathyCard : BaseCard
 {
-    void Start()
+    void INIT(bool IntoDeck)
     {
-        base.Start();
+        base.INIT(IntoDeck);
     }
 
     public override void CardAction()

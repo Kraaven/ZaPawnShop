@@ -49,23 +49,34 @@ public class CardHolder : MonoBehaviour
         // Create 5 cards to choose from
         for (int i = 0; i < 8; i++)
         {
-            SpawnCard();
+            GiveOptionCard();
             yield return new WaitForSeconds(0.2f);
         }
     }
 
-    private void SpawnCard()
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GetCardInDeck();
+        }
+    }
+
+    private void SpawnCard(bool InDeck)
     {
         if (DeckPossibilities.Count > 0)
         {
+            //get a random index from the possible cards in deck
             int randomIndex = Random.Range(0, DeckPossibilities.Count);
             string cardName = DeckPossibilities[randomIndex];
             
+            //Check if that name is inside the Dictionary
             if (CardDictionary.TryGetValue(cardName, out GameObject cardPrefab))
             {
                 // Instantiate the card
                 GameObject cardInstance = Instantiate(cardPrefab, transform.position, transform.rotation, Canvas.transform);
                 cardInstance.name = cardPrefab.name;
+                cardInstance.GetComponent<BaseCard>().INIT(InDeck);
                 // Remove the card name from DeckPossibilities
                 DeckPossibilities.RemoveAt(randomIndex);
             }
@@ -78,6 +89,16 @@ public class CardHolder : MonoBehaviour
         {
             Debug.LogWarning("No more cards available to spawn.");
         }
+    }
+
+    public void GetCardInDeck()
+    {
+        SpawnCard(true);
+    }
+
+    public void GiveOptionCard()
+    {
+        SpawnCard(false);
     }
 
     public void ReturnCardToPossibilities(string cardName)

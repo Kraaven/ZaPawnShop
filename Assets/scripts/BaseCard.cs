@@ -13,10 +13,20 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
     public bool CardUsed;
     public int DeckPosition;
 
-    public void Start()
+    public void INIT(bool IntoDeck)
     {
         //Insert the card into the starter picking options
-        GameObject.Find("OfferedCards").GetComponent<Positions>().InsertCard(this);
+
+        if (!IntoDeck)
+        {
+            GameObject.Find("OfferedCards").GetComponent<Positions>().InsertCard(this);
+        }
+        else
+        {
+            GameObject.Find("MyDeck").GetComponent<Positions>().InsertCard(this);
+            CardCollected = true;
+        }
+        
     }
 
     //TO BE OVERWRITTEN IN A CHILD CLASS
