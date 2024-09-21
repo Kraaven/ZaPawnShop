@@ -13,7 +13,7 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
     public bool CardUsed;
     public int DeckPosition;
 
-    public List<GameObject> MyDeckCards;
+    //public List<GameObject> MyDeckCards;
 
     
     public void INIT(bool IntoDeck)
@@ -90,14 +90,14 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
                 // Return the card to possibilities before destroying it
                 CardHolder.Instance.ReturnCardToPossibilities(CardHolder.LastUsedCard.name);
                 Destroy(CardHolder.LastUsedCard.gameObject);
-                for(int i = 0; i < MyDeckCards.Count; i++)
-                {
-                    if(MyDeckCards[i].name == gameObject.name)
-                    {
-                        Debug.Log("DESTROYING: " + MyDeckCards[i].name );
-                        Destroy(MyDeckCards[i]);
-                    }
-                }
+                // for(int i = 0; i < MyDeckCards.Count; i++)
+                // {
+                //     if(MyDeckCards[i].name == gameObject.name)
+                //     {
+                //         Debug.Log("DESTROYING: " + MyDeckCards[i].name );
+                //         Destroy(MyDeckCards[i]);
+                //     }
+                // }
             }
 
             CardHolder.LastUsedCard = this;

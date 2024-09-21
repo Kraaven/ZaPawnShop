@@ -19,20 +19,18 @@ public class HardCutCard : BaseCard
         }
         else
         {
-            randomCardToDestroy = UnityEngine.Random.Range(0,MyDeckCards.Count);
 
-            for(int i = 0; i < MyDeckCards.Count; i++)
-            {
-                Debug.Log("" + MyDeckCards[i]);
-            }
+            List<BaseCard> cards = GameObject.Find("MyDeck").GetComponent<Positions>().PlayerCards;
+
+            BaseCard deletecard = cards[Random.Range(0, cards.Count)];
+
+            cards.Remove(deletecard);
             
-            GameManager.Instance.ModifyPrice(-0.3f);
-            if(MyDeckCards[randomCardToDestroy].name != "Hard Cut")
-            {
-                MyDeckCards[randomCardToDestroy].SetActive(false);
-                MyDeckCards.Remove(MyDeckCards[randomCardToDestroy]);
-            }
+            CardHolder.Instance.ReturnCardToPossibilities(deletecard.name);
+            Destroy(deletecard.gameObject);
+            GameManager.Instance.ModifyPrice(0.3f);
             
+
         }
     }
 }
