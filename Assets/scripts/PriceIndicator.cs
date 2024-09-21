@@ -19,13 +19,6 @@ public class PriceIndicator : MonoBehaviour
         UppercapMultiplier = Random.Range(3, 5);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            MoveToNewValue(_gameManager.NegotiationPrice);
-        }
-    }
 
     public void MoveToNewValue(int newAskingPrice)
     {

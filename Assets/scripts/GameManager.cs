@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public static bool PlayerTurn;
     public static bool Preturn = true;
     public static bool AI_Turn;
+    
 
     public bool SkipBot;
     public int BasePrice = 200;
@@ -20,7 +21,8 @@ public class GameManager : MonoBehaviour
     public bool EndNegotiation;
     public List<FutureEvent> Events;
     
-
+    [SerializeField] private PriceIndicator _priceIndicator; 
+    
     private void Awake()
     {
         Instance = this;
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
         NegotiationPrice = (int)askingPriceArray[Random.Range(0, 3)]; 
         Events = new List<FutureEvent>();
         StartCoroutine(GameLoop());
+        _priceIndicator.MoveToNewValue(NegotiationPrice);
     }
 
     private IEnumerator GameLoop()
