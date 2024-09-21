@@ -12,6 +12,7 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
     public bool Upgraded;
     public bool CardUsed;
     public int DeckPosition;
+    public GameObject OriginalPrefab;
 
     public void Start()
     {
@@ -71,16 +72,19 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
         actionSequence.AppendInterval(1.5f);
 
         actionSequence.Append(transform.DOMove(CardHolder.LastUsedPosition.position, 0.75f));
-        actionSequence.Append(CardHolder.LastUsedCard.transform.DOScale(Vector3.one * 0.05f, 0.1f).OnComplete(() =>
+        actionSequence.AppendInterval(0.2f).OnComplete(() =>
         {
             if (CardHolder.LastUsedCard != null)
             {
+                // Return the card to possibilities before destroying it
+                CardHolder.Instance.ReturnCardToPossibilities(CardHolder.LastUsedCard.name);
                 Destroy(CardHolder.LastUsedCard.gameObject);
             }
 
             CardHolder.LastUsedCard = this;
             CardUsed = true;
-        }));
+        });
+
     }
     
     

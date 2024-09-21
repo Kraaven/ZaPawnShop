@@ -1078,7 +1078,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1840,7 +1840,16 @@ MonoBehaviour:
   Canvas: {fileID: 807883908}
   PlayerDeck: {fileID: 926033109}
   LastCard: {fileID: 215272864}
-  AvailableCards: []
+  AvailableCards:
+  - {fileID: 1248978340568733443, guid: f8efa8148dae1ac44b984213a7e9fc01, type: 3}
+  - {fileID: 1248978340568733443, guid: b0a0df83017643a4cbf1dc1c66dcbdbd, type: 3}
+  - {fileID: 1248978340568733443, guid: 0d38f2375e314b144b3268169e0e8e2a, type: 3}
+  - {fileID: 1248978340568733443, guid: a0c0149681258294488f123250c99e3e, type: 3}
+  - {fileID: 1248978340568733443, guid: 67ee240ee1e7b4246b36bb34d045457d, type: 3}
+  - {fileID: 1248978340568733443, guid: 7c01af00a999d1e42bf997b5eb302c59, type: 3}
+  - {fileID: 1248978340568733443, guid: dd7f9078c938e1543bdb643cc8d04636, type: 3}
+  - {fileID: 1248978340568733443, guid: 47e52cd63aaaecb4cb166ee0a2b25c03, type: 3}
+  - {fileID: 1248978340568733443, guid: eeed99e2657540c40b39e5366277cf0c, type: 3}
 --- !u!1 &2049324296
 GameObject:
   m_ObjectHideFlags: 0

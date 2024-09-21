@@ -19,7 +19,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Temp so that we can actually change turns manually
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            PlayerTurn = true;
+        }
     }
 }
 
