@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2457618072639466053}
   - component: {fileID: 1024010296541504698}
   - component: {fileID: 605342241477348228}
-  - component: {fileID: 8949566467598753086}
+  - component: {fileID: -1428628838699960956}
   m_Layer: 5
-  m_Name: CardPrefab
+  m_Name: ChangeBy5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.3
---- !u!114 &8949566467598753086
+--- !u!114 &-1428628838699960956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,14 +86,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1248978340568733443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c27767983dded044827615835437047, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b9c8d054908eab43bbc6155fb111b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CardCollected: 0
   Upgraded: 0
   CardUsed: 0
   DeckPosition: 0
-  OriginalPrefab: {fileID: 1248978340568733443}
+  PercentageChange: 5
 --- !u!1 &2717725778802930026
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Text
+  m_text: Change by 5
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -186,8 +186,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 21.39
+  m_fontSizeBase: 21.39
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

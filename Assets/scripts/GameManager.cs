@@ -21,7 +21,12 @@ public class GameManager : MonoBehaviour
     public bool EndNegotiation;
     public List<FutureEvent> Events;
     
-    [SerializeField] private PriceIndicator _priceIndicator; 
+    [SerializeField] private PriceIndicator _priceIndicator;
+
+    #region initialization
+
+    
+
     
     private void Awake()
     {
@@ -47,6 +52,13 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(MainGamePhase());
         EndGame();
     }
+    
+    #endregion
+
+    #region GameplayLoop
+
+    
+
     
 
     //Main Gameplay loop
@@ -77,7 +89,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Bot's Turn");
         yield return null; // Give a frame for any UI updates
-        print("BOT DOING SHIT");
+        //print("BOT DOING SHIT");
         yield return new WaitForSeconds(1);
         BotTurn();
     }
@@ -121,6 +133,21 @@ public class GameManager : MonoBehaviour
     {
         AI_Turn = true;
     }
+    
+    #endregion
+
+    public void ModifyPrice(float Percentage)
+    {
+        float PerspectivePercentage = Percentage;
+
+        if (PlayerTurn) PerspectivePercentage *= -1;
+        // print($"Modifying by {PerspectivePercentage}");
+        // print($"FROM : {NegotiationPrice} TO : {(int)(NegotiationPrice *(1 + PerspectivePercentage))}");
+        NegotiationPrice = (int)(NegotiationPrice *(1 + PerspectivePercentage));
+        _priceIndicator.MoveToNewValue(NegotiationPrice);
+    }
+    
+
 }
 
 //The whole Future Event Class

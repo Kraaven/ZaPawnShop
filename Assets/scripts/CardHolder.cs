@@ -47,7 +47,7 @@ public class CardHolder : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         
         // Create 5 cards to choose from
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 8; i++)
         {
             SpawnCard();
             yield return new WaitForSeconds(0.2f);
