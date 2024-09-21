@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Unity.VisualScripting;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,6 +30,14 @@ public class GameManager : MonoBehaviour
     {
         Events = new List<FutureEvent>();
         StartCoroutine(GameLoop());
+        
+        List<float> askingPriceArray = new List<float>();
+        askingPriceArray.Add(BasePrice * 1.5f);
+        askingPriceArray.Add(BasePrice * 2f);
+        askingPriceArray.Add(BasePrice / 1.5f);
+        askingPriceArray.Add(BasePrice / 2f);
+        
+        NegotiationPrice = (int)askingPriceArray[Random.Range(0, 4)]; 
     }
 
     private IEnumerator GameLoop()
