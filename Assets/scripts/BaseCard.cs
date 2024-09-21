@@ -60,12 +60,6 @@ public class BaseCard : MonoBehaviour, IPointerClickHandler
                     // Collect the card if it's not collected yet
                     CardCollected = true;
                     GameObject.Find("MyDeck").GetComponent<Positions>().InsertCard(this);
-                    Debug.Log("Added + " + gameObject.name + "to mydecks list");
-                    MyDeckCards.Add(gameObject);
-                    for (int i = 0; i < MyDeckCards.Count;i++)
-                    {
-                        Debug.Log(MyDeckCards[i]);
-                    }
                 }
             }
             // Otherwise, it's the player's turn (use cards)

@@ -36,6 +36,7 @@ public class Positions : MonoBehaviour
             card.transform.DOMove(CardPositions[EmptyPosition].transform.position, 0.45f);
             card.transform.DOScale(Vector3.one, 0.45f);
             card.DeckPosition = EmptyPosition;
+            PlayerCards.Add(card);
             
             EmptyPosition++;
 
