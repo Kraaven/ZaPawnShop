@@ -34,7 +34,6 @@ public class CardHolder : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         
-        FindObjectOfType<GameManager>().INIT();
     }
 
     // Update is called once per frame
